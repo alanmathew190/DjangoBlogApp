@@ -3,11 +3,16 @@
     <h1>Create Blogs</h1>
 <form method="POST">
     {% csrf_token %}
-    <label for="title">Title: </label>
+    <!-- <label for="title">Title: </label>
+    <br>
     <input type="text" name="title" required><br>
 
     <label for="content">Content: </label>
-    <textarea name="content" required></textarea><br>
+    <br>
+    <textarea name="content" required></textarea><br> -->
 
+    {{frm.as_p}}
     <button type="submit">Submit</button>
+
 </form>
+<a href="{% url 'list'%}">View All Posts</a>

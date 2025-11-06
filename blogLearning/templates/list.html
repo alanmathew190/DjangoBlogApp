@@ -1,1 +1,9 @@
 <h1>List Blogs</h1>
+
+<a href="{% url 'create'%}">Create new post</a>
+<hr>
+{% for post in posts %}
+    <h2>{{post.title}}</h2>
+    <p>{{post.content}}</p>
+    <hr>
+{% endfor %}
