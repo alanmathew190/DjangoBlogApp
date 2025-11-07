@@ -1,4 +1,4 @@
-<h1>List Blogs</h1>
+<!-- <h1>List Blogs</h1>
 
 <a href="{% url 'create'%}">Create new post</a>
 <hr>
@@ -6,4 +6,29 @@
     <h2>{{post.title}}</h2>
     <p>{{post.content}}</p>
     <hr>
-{% endfor %}
+{% endfor %} -->
+
+<h1>List of Blogs</h1>
+<a href="{% url 'create' %}">+ Add New Blog</a>
+<br/>
+<br/>
+
+<table style="width: 100%; border: 1px solid blue; text-align: center;">
+  <tr >
+    <th>Title</th>
+    <th>Content</th>    
+    <th>Edit / Delete</th>
+  </tr>
+
+  {% for post in posts %}
+  <tr>
+    <td>{{ post.title }}</td>
+    <td>{{ post.content }}</td>  
+   
+    <td>
+      <a href="{% url 'edit' post.id %}">Edit</a> 
+      <a href="{% url 'delete' post.id %}">Delete</a>
+    </td>
+  </tr> 
+  {% endfor %}
+</table>

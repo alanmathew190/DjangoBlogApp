@@ -18,6 +18,23 @@ def list(request):
     posts=blogInfo.objects.all()
     return render(request,'list.html',{'posts':posts})
 
+def delete(request,id):
+    instance=blogInfo.objects.get(id=id)
+    instance.delete()
+    blogs_set=blogInfo.objects.all()
+    return render(request,'list.html',{'posts':blogs_set})    
+
+def edit(request,id):
+    instanceToBeEdited=blogInfo.objects.get(id=id)
+    if request.method=='POST':
+        frm=BlogForm(request.POST,instance=instanceToBeEdited)
+        if frm.is_valid():
+            frm.save()
+            return redirect('list')
+    else:
+        frm=BlogForm(instance=instanceToBeEdited)
+    
+    return render(request,'create.html',{'frm':frm})
 
 
 # title=request.POST.get('title')
